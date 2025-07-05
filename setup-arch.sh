@@ -20,12 +20,39 @@ PACKAGES=(
 
 # Install packages
 for package in "${PACKAGES[@]}"; do
-    if dpkg -l | grep -qw $package; then
+    if pacman -Qs "$package" > /dev/null; then
         echo "$package is already installed"
     else
         echo "Installing $package..."
-        pacman -S -y $package
+        pacman -S --noconfirm "$package"
     fi
 done
 
-echo "Package installation complete!"
+# Source directory for dotfiles (assuming script is run from dotfiles directory)
+SRC_DIR="$(pwd)"
+
+# Destination directory (home directory)
+DEST_DIR="$HOME"
+
+# List of files/folders to copy
+FILES=(
+    ".config"
+    ".tmux.conf"
+    "tmux-sessionizer.sh"
+    ".zshrc"
+)
+
+# Ensure destination directory exists
+mkdir -p "$DEST_DIR"
+
+# Copy files/folders
+for file in "${FILES[@]}"; do
+    if [[ -e "$SRC_DIR/$file" ]]; then
+        cp -r "$SRC_DIR/$file" "$DEST_DIR/"
+        echo "Copied $file to $DEST_DIR"
+    else
+        echo "Warning: $file not found in $SRC_DIR"
+    fi
+done
+
+echo "Package installation and file copy complete!"
