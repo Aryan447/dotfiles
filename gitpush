@@ -11,3 +11,10 @@ git add .
 git commit -m 'automated dev commit'
 git push
 popd
+
+pushd ~/.config/nvim/
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
+
