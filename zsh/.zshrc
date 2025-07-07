@@ -2,7 +2,8 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-alias tms="$HOME/.local/bin/tmux-sessionizer.sh"
+export PATH="$HOME/.local/scripts:$PATH"
+alias tms="$HOME/.local/scripts/tmux-sessionizer.sh"
 bindkey -s ^f "tms"
 export GHOSTTY_BACKEND=epoll
 # Set name of the theme to load --- if set to "random", it will
