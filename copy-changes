@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd
+
+cd .config
+
+sudo cp -r hypr ghostty nvim waybar ../dotfiles/.config
+
+cd
+
+cd dotfiles
+
+./gitpush.sh
