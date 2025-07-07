@@ -38,7 +38,7 @@
     "format-disconnected": "󰤠 ",
     "interval": 5,
     "tooltip": false,
-    "on-click": "systemsettings kcm_bluetooth"
+    "on-click": "systemsettings"
   },
   "cpu": {
     "interval": 1,
@@ -72,7 +72,7 @@
   "custom/lock": {
     "tooltip": false,
     "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
-    "format": ""
+    "format": "",
   },
   "later": {
     "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
