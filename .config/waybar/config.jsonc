@@ -14,6 +14,7 @@
     "cpu",
     "memory",
     "tray",
+    "custom/music",
     "custom/lock"
   ],
   "hyprland/workspaces": {
@@ -39,7 +40,7 @@
     "interval": 5,
     "tooltip": false,
     "on-click": "systemsettings"
-   },
+  },
   "cpu": {
     "interval": 1,
     "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
@@ -71,8 +72,21 @@
   },
   "custom/lock": {
     "tooltip": false,
-    "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+    //"on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+    "on-click": "wlogout &",
+    "on-click-right": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Suspend \nRight Click: Lock",
     "format": "",
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
   },
   "later": {
     "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
