@@ -74,9 +74,7 @@
     "tooltip": false,
     //"on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
     "on-click": "wlogout &",
-    "on-click-right": "sh -c '(sleep 0.5s; hyprlock)' & disown",
     "tooltip": true,
-    "tooltip-format": "Left Click: Suspend \nRight Click: Lock",
     "format": "",
   },
   "custom/music": {
