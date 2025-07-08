@@ -4,7 +4,7 @@ cd
 
 cd .config
 
-sudo cp -r hypr ghostty nvim waybar ../dotfiles/.config
+sudo cp -r hypr ghostty nvim waybar wlogout ../dotfiles/.config
 
 cd
 

@@ -3,7 +3,8 @@
   "position": "top",
   "modules-left": [
     "custom/stream_status",
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/music",
   ],
   "modules-center": ["clock"],
   "modules-right": [
@@ -14,7 +15,6 @@
     "cpu",
     "memory",
     "tray",
-    "custom/music",
     "custom/lock"
   ],
   "hyprland/workspaces": {
@@ -84,7 +84,7 @@
     "escape": true,
     "interval": 5,
     "tooltip": false,
-    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "exec": "playerctl metadata --format='{{ title }} - {{ artist }}'",
     "on-click": "playerctl play-pause",
     "max-length": 50
   },
