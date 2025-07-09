@@ -1,13 +1,9 @@
 #!/bin/bash
 
-cd
+pushd ~/.config
+sudo cp -r hypr ghostty nvim waybar wlogout rofi ../dotfiles/.config
+popd
 
-cd .config
-
-sudo cp -r hypr ghostty nvim waybar wlogout ../dotfiles/.config
-
-cd
-
-cd dotfiles
+pushd dotfiles
 
 ./gitpush

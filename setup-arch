@@ -55,4 +55,33 @@ for file in "${FILES[@]}"; do
     fi
 done
 
+#Install zsh
+echo "installing zsh"
+pushd runs/
+./zsh
+popd
+pushd zsh/
+cp -r .zshrc .zsh .zsh_profile ~/
+popd
+
+#install paru
+echo "installing paru"
+pushd runs/
+./install-paru.sh
+popd
+
+#Copy scripts
+echo "copying scripts"
+cp -r .local ~/
+
+# install hyprland
+read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
+if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
+    PACKAGESHYPRLAND=("hyprland hyprpaper hyprlock hyprshot rofi nautilus eod hyprpolkitagen")
+    sudo pacman -S "${PACKAGESHYPRLAND[@]}"
+    paru -Syu hyprnotify wlogout overskride--noconfirm --needed
+else
+    echo "Hyprland installation skipped."
+fi
+
 echo "Package installation and file copy complete!"

@@ -1,0 +1,10 @@
+/* ---- Global Configuration Fonts ---- */
+@import "~/.config/rofi/0-shared-fonts.rasi"
+
+/* note: Main themes in ~/.config/rofi/themes */
+/* 4
+KooL_style-10-Fancy.rasi             KooL_style-13-Vertical.rasi   KooL_style-3-FullScreen-v1.rasi  KooL_style-7.rasi
+KooL_style-10-Fancy-v2.rasi          KooL_style-14.rasi            KooL_style-3-Fullscreen-v2.rasi  KooL_style-8.rasi
+KooL_style-11-Win11-list-dark.rasi   KooL_style-15-solarized.rasi  KooL_style-4.rasi                KooL_style-9.rasi
+KooL_style-11-Win11-list-light.rasi  KooL_style-2-Dark.rasi        KooL_style-5.rasi */
+@theme "~/.config/rofi/themes/KooL_style-4.rasi"

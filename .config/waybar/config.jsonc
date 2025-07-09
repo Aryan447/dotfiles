@@ -68,7 +68,7 @@
     "status-format": " {status}",
     "interval": 5,
     "tooltip": true,
-    "on-click": "systemsettings kcmbluetooth"
+    "on-click": "overskride"
   },
   "custom/lock": {
     "tooltip": false,
