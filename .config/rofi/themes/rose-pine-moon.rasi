@@ -13,47 +13,56 @@ configuration {
     me-accept-entry:            "MousePrimary";
 }
 
-/* ---- Load wallust colors ---- */
-@theme "~/.config/rofi/wallust/colors-rofi.rasi"
-
 /*****----- Global Properties -----*****/
 * {
-    background-alt: @color1;
-    selected:       @color12;
-    active:         @color11;
-    urgent:         #F7768E;
+    color0:                     #2a273f; /* cur */
+    color1:                     #6e6a86; /* cmt */
+    color2:                     #9ccfd8; /* cya */
+    color3:                     #f6c177; /* yel */
+    color4:                     #3e8fb0; /* grn */
+    color5:                     #ea9a97; /* ora */
+    color6:                     #c4a7e7; /* pur */
+    color7:                     #eb6f92; /* red */
+    color8:                     #232136; /* bg */
+    color9:                     #e0def4; /* fgd */
+    color10:                    #2a273f; /* cur */
+    color11:                    #3e8fb0; /* grn */
+    color12:                    #c4a7e7; /* pur */
 
-    border-color:                @color11;
-    handle-color:                @selected;
-    background-color:            @background;
-    foreground-color:            @foreground;
-    alternate-background:        @background-alt;
-    normal-background:           @background;
-    normal-foreground:           @foreground;
-    urgent-background:           @urgent;
-    urgent-foreground:           @background;
-    active-background:           @active;
-    active-foreground:           @background;
-    selected-normal-background:  @selected;
-    selected-normal-foreground:  @background;
-    selected-urgent-background:  @active;
-    selected-urgent-foreground:  @background;
-    selected-active-background:  @urgent;
-    selected-active-foreground:  @color12;
-    alternate-normal-background: @background;
-    alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @urgent;
-    alternate-urgent-foreground: @background;
-    alternate-active-background: @active;
-    alternate-active-foreground: @background;
+    background:                 #232136; /* bg */
+    foreground:                 #e0def4; /* fgd */
+    background-alt:             #6e6a86; /* cmt */
+    selected:                   #c4a7e7; /* pur */
+    active:                     #3e8fb0; /* grn */
+    urgent:                     #eb6f92; /* red */
 
-
+    border-color:               #ea9a97; /* ora */
+    handle-color:               #c4a7e7; /* pur */
+    background-color:           #232136; /* bg */
+    foreground-color:           #e0def4; /* fgd */
+    alternate-background:       #6e6a86; /* cmt */
+    normal-background:          #232136; /* bg */
+    normal-foreground:          #e0def4; /* fgd */
+    urgent-background:          #eb6f92; /* red */
+    urgent-foreground:          #232136; /* bg */
+    active-background:          #3e8fb0; /* grn */
+    active-foreground:          #232136; /* bg */
+    selected-normal-background: #c4a7e7; /* pur */
+    selected-normal-foreground: #232136; /* bg */
+    selected-urgent-background: #3e8fb0; /* grn */
+    selected-urgent-foreground: #232136; /* bg */
+    selected-active-background: #eb6f92; /* red */
+    selected-active-foreground: #c4a7e7; /* pur */
+    alternate-normal-background: #232136; /* bg */
+    alternate-normal-foreground: #e0def4; /* fgd */
+    alternate-urgent-background: #eb6f92; /* red */
+    alternate-urgent-foreground: #232136; /* bg */
+    alternate-active-background: #3e8fb0; /* grn */
+    alternate-active-foreground: #232136; /* bg */
 }
-
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
@@ -61,8 +70,6 @@ window {
     width:                       35%;
     x-offset:                    0px;
     y-offset:                    0px;
-
-    /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
@@ -70,7 +77,6 @@ window {
     border-radius:               10px;
     border-color:                @border-color;
     cursor:                      "default";
-    /* Backgroud Colors */
     background-color:            @background-color;
 }
 
@@ -169,7 +175,6 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-
     spacing:                     5px;
     margin:                      0px;
     padding:                     10px;
@@ -212,7 +217,6 @@ element normal.active {
     background-color:            transparent;
     text-color:                  @active-foreground;
 }
-
 element-text selected,
 element selected.normal {
     background-color:            @selected-normal-background;
@@ -253,7 +257,7 @@ element-text {
 }
 
 /*****----- Mode Switcher -----*****/
-mode-switcher{
+mode-switcher {
     enabled:                     true;
     expand:                      false;
     orientation:                 vertical;
