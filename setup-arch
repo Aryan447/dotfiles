@@ -77,9 +77,9 @@ cp -r .local ~/
 # install hyprland
 read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
 if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
-    PACKAGESHYPRLAND=("hyprland hyprpaper hyprlock hyprshot rofi nautilus eod hyprpolkitagen swww")
+    PACKAGESHYPRLAND=("hyprland hyprpaper hyprlock hyprshot rofi nautilus eog hyprpolkitagen swww")
     sudo pacman -S "${PACKAGESHYPRLAND[@]}"
-    paru -Syu hyprnotify wlogout overskride--noconfirm --needed
+    paru -Syu hyprnotify hyprpolkitagen wlogout overskride--noconfirm --needed
 else
     echo "Hyprland installation skipped."
 fi
