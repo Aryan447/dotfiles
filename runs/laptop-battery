@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo pacman -Syu tlp --noconfirm
+
+sudo systemctl enable tlp.service
+
+
+paru -Syu --noconfirm --needed auto-cpufreq
+sudo auto-cpufreq --install

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-paru -Syu hyprnotify --noconfirm --needed
+sudo pacman -Syu hyprland hyprpaper hyprlock hyprshot rofi-wayland nautilus eog hyprpolkitagen swww --noconfirm --needed
 
-sudo pacman -Syu hyprpaper --noconfirm --needed
+paru -Syu hyprnotify wlogout wshowkeys-mao-git overskride --noconfirm --needed
