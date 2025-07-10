@@ -1,9 +1,12 @@
 #!/bin/bash
 
 sudo pacman -Syu tlp --noconfirm
+sudo pacman -Rns power-profiles-daemon
 
+sudo systemctl mask power-profiles-daemon.service
+sudo systemctl disable power-profiles-daemon.service
 sudo systemctl enable tlp.service
+sudo systemctl start tlp.service
 
-
-paru -Syu --noconfirm --needed auto-cpufreq
-sudo auto-cpufreq --install
+#paru -Syu --noconfirm --needed auto-cpufreq
+#sudo auto-cpufreq --install
