@@ -1,8 +1,9 @@
 #!/bin/bash
 
-sudo pacman -Syu tlp --noconfirm
+sudo pacman -Syu tlp tlp-rdw --noconfirm
 sudo pacman -Rns power-profiles-daemon
 
+sudo systemctl stop power-profiles-daemon.service
 sudo systemctl mask power-profiles-daemon.service
 sudo systemctl disable power-profiles-daemon.service
 sudo systemctl enable tlp.service
