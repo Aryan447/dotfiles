@@ -1,9 +1,7 @@
 #!/bin/bash
 
 pushd ~/.config
-sudo cp -r hypr ghostty nvim waybar wlogout rofi ../dotfiles/.config
+sudo cp -r hypr ghostty nvim waybar wlogout rofi ../dotfiles/env/.config
 popd
-
-pushd dotfiles
 
 ./gitpush
