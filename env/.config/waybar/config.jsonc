@@ -38,8 +38,9 @@
     "format-ethernet": "󰈀 ",
     "format-disconnected": "󰤠 ",
     "interval": 5,
-    "tooltip": false,
-    "on-click": "systemsettings"
+    "tooltip-format": "Left Click: Open Network Manager\nRight Click: Close Network Manager",
+    "on-click": "nm-applet",
+    "on-click-right": "pkill nm-applet",
   },
   "cpu": {
     "interval": 1,
@@ -68,6 +69,7 @@
     "status-format": " {status}",
     "interval": 5,
     "tooltip": true,
+    "tooltip-format": "Left Click: Open Overskride",
     "on-click": "overskride"
   },
   "custom/lock": {

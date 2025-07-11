@@ -39,5 +39,7 @@ popd
 #else
 #    echo "Hyprland installation skipped."
 #fi
-#
+
+sudo chmod -R a+rw $HOME/.config $HOME/.local/scripts
+
 #echo "Package installation and file copy complete!"

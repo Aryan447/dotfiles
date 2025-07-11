@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd ~/personal/projects/py_projects/
+pushd ~/dev/py_projects/
 git add .
 git commit -m 'automated dev commit'
 git push
