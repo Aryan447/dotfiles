@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo sbctl create-keys
+
+
