@@ -3,6 +3,8 @@
 # Update package lists
 sudo pacman -Syu
 
+sudo pacman -S ttf-jetbrains-mono-nf
+
 # Install Packages
 sudo pacman -S nvim
 
@@ -11,35 +13,40 @@ echo "Copying config files"
 pushd env
 sudo cp -r .config .local .tmux.conf .profile .zshrc .zsh_profile $HOME
 popd
-#Install zsh
-#echo "installing zsh"
-#pushd runs/
-#./zsh.sh
-#popd
-#pushd zsh/
-#cp -r .zshrc .zsh .zsh_profile ~/
-#popd
-#
-##install paru
-#echo "installing paru"
-#pushd runs/
-#./paru
-#popd
-#
-##Copy scripts
-#echo "copying scripts"
-#cp -r .local ~/
-#
-## install hyprland
-#read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
-#if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
-#    pushd runs/
-#    ./install-hyprland
-#    echo "hyprland installation completed"
-#else
-#    echo "Hyprland installation skipped."
-#fi
+
+# Install zsh
+echo "installing zsh"
+pushd runs/
+./zsh.sh
+popd
+pushd zsh/
+cp -r .zshrc .zsh .zsh_profile ~/
+popd
+
+# Install paru
+echo "installing paru"
+pushd runs/
+./paru
+popd
+
+# Install zen browser
+
+
+# Copy scripts
+echo "copying scripts"
+cp -r .local ~/
+
+# install hyprland
+read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
+if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
+    pushd runs/
+    ./install-hyprland
+    echo "hyprland installation completed"
+else
+    echo "Hyprland installation skipped."
+fi
 
 sudo chmod -R a+rw $HOME/.config $HOME/.local/scripts
 
-#echo "Package installation and file copy complete!"
+sleep 2
+echo "Package installation and file copy complete!"
