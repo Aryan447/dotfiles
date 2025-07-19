@@ -1,0 +1,477 @@
+:root {
+    --cc-bg: rgba(16, 16, 16, 0.7); /* #101010 with 0.7 opacity */
+    --noti-border-color: rgba(255, 255, 255, 0.15);
+    --noti-bg: 16, 16, 16; /* #101010 */
+    --noti-bg-alpha: 1;
+    --noti-bg-darker: rgb(16, 16, 16); /* #101010 */
+    --noti-bg-hover: rgb(56, 56, 56); /* #383838 */
+    --noti-bg-focus: rgba(16, 16, 16, 0.6); /* #101010 with 0.6 opacity */
+    --noti-close-bg: rgb(16, 16, 16); /* #101010 */
+    --noti-close-bg-hover: rgb(56, 56, 56); /* #383838 */
+    --text-color: rgb(198, 208, 245); /* #c6d0f5 */
+    --text-color-disabled: rgb(150, 150, 150);
+    --bg-selected: rgb(137, 180, 250); /* #89b4fa */
+    --notification-icon-size: 64px;
+    --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+    --notification-group-icon-size: 32px;
+    --mpris-album-art-overlay: rgba(202, 158, 230, 0.55); /* #ca9ee6 with 0.55 opacity */
+    --mpris-button-hover: rgba(56, 56, 56, 1); /* #383838 */
+    --mpris-album-art-icon-size: 96px;
+    --widget-volume-row-icon-size: 24px;
+}
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 16px;
+    min-height: 0;
+    color: #c6d0f5;
+    background: transparent;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 0px;
+}
+
+.close-button {
+    background: var(--noti-close-bg);
+    color: #babbf1;
+    text-shadow: none;
+    padding: 0;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: none;
+    border: none;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.close-button:hover {
+    box-shadow: none;
+    background: var(--noti-close-bg-hover);
+    color: #85c1dc;
+    transition: background 0.15s ease-in-out;
+    border: none;
+}
+
+.notification-row {
+    background: none;
+    outline: none;
+    /* margin: -10px -25px 5px 80px; */
+    margin: -10px -25px 5px 20px;
+}
+
+.notification-row:focus {
+    background: var(--noti-bg-focus);
+}
+
+.notification-row .notification-background {
+    padding: 6px 12px;
+    margin: 5px;
+}
+
+.notification-row .notification-background .notification {
+    border-radius: 5px;
+    border: 1px solid var(--noti-border-color);
+    padding: 0;
+    transition: background 0.15s ease-in-out;
+    background: rgba(var(--noti-bg), var(--noti-bg-alpha));
+}
+
+.notification-row .notification-background .notification.low,
+.notification-row .notification-background .notification.normal,
+.notification-row .notification-background .notification.critical {
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+    padding: 4px;
+    margin: 0;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    color: #c6d0f5;
+    transition: background 0.15s ease-in-out;
+    border-radius: 5px;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+    -gtk-icon-filter: none;
+    background: var(--noti-bg-hover);
+    color: #85c1dc;
+}
+
+.notification-row .notification-background .notification .notification-default-action:not(:only-child) {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content {
+    background: transparent;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+    -gtk-icon-filter: none;
+    -gtk-icon-size: var(--notification-icon-size);
+    border-radius: 100px;
+    margin: 5px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
+    -gtk-icon-filter: none;
+    -gtk-icon-size: var(--notification-app-icon-size);
+    -gtk-icon-shadow: 0 1px 4px black;
+    margin: 5px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box label {
+    filter: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    color: #c6d0f5;
+    text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+    font-size: 16px;
+    font-weight: bold;
+    background: transparent;
+    color: #8caaee;
+    text-shadow: none;
+    margin-right: 16px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+    font-size: 15px;
+    font-weight: normal;
+    background: transparent;
+    color: #c6d0f5;
+    text-shadow: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content progressbar {
+    margin-top: 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .body-image {
+    margin-top: 4px;
+    background-color: white;
+    -gtk-icon-filter: none;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply {
+    margin-top: 4px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-entry {
+    background: var(--noti-bg-darker);
+    color: #c6d0f5;
+    caret-color: #c6d0f5;
+    border: 1px solid var(--noti-border-color);
+    border-radius: 5px;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button {
+    margin-left: 4px;
+    background: rgba(var(--noti-bg), var(--noti-bg-alpha));
+    border: 1px solid var(--noti-border-color);
+    border-radius: 5px;
+    color: #c6d0f5;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:disabled {
+    background: initial;
+    color: var(--text-color-disabled);
+    border: 1px solid var(--noti-border-color);
+    border-color: transparent;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
+    background: var(--noti-bg-hover);
+    color: #85c1dc;
+}
+
+.notification-row .notification-background .notification .notification-alt-actions {
+    background: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 4px;
+}
+
+.notification-row .notification-background .notification .notification-action {
+    margin: 5px;
+    padding: 0;
+}
+
+.notification-row .notification-background .notification .notification-action > button {
+    border-radius: 5px;
+}
+
+.notification-group {
+    transition: opacity 200ms ease-in-out;
+}
+
+.notification-group:focus {
+    background: var(--noti-bg-focus);
+}
+
+.notification-group.low,
+.notification-group.normal,
+.notification-group.critical {
+}
+
+.notification-group .notification-group-close-button .close-button {
+    margin: 5px 16px;
+}
+
+.notification-group .notification-group-buttons, .notification-group .notification-group-headers {
+    margin: 0 16px;
+    color: #c6d0f5;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+    color: #babbf1;
+    -gtk-icon-size: var(--notification-group-icon-size);
+}
+
+.notification-group .notification-group-headers .notification-group-header {
+    color: #c6d0f5;
+}
+
+.notification-group.collapsed {
+}
+
+.notification-group.collapsed.not-expanded {
+    opacity: 0.4;
+}
+
+.notification-group.collapsed .notification-row .notification {
+    background-color: rgba(var(--noti-bg), 1);
+}
+
+.notification-group.collapsed .notification-row:not(:last-child) {
+}
+
+.notification-group.collapsed .notification-row:not(:last-child) .notification-action,
+.notification-group.collapsed .notification-row:not(:last-child) .notification-default-action {
+    opacity: 0;
+}
+
+.notification-group.collapsed:hover .notification-row:not(:only-child) .notification {
+    background-color: var(--noti-bg-hover);
+}
+
+.control-center {
+    background: var(--cc-bg);
+    color: #c6d0f5;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.control-center .control-center-list-placeholder {
+    opacity: 0.5;
+}
+
+.control-center .control-center-list {
+    background: transparent;
+}
+
+.control-center .control-center-list .notification {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+.control-center .control-center-list .notification .notification-default-action,
+.control-center .control-center-list .notification .notification-action {
+    transition: opacity 400ms ease-in-out, background 0.15s ease-in-out;
+}
+
+.control-center .control-center-list .notification .notification-default-action:hover,
+.control-center .control-center-list .notification .notification-action:hover {
+    background-color: var(--noti-bg-hover);
+    color: #85c1dc;
+}
+
+.blank-window {
+    background: transparent;
+}
+
+.floating-notifications {
+    background: transparent;
+}
+
+.floating-notifications .notification {
+    box-shadow: none;
+}
+
+.widget-title > label {
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.widget-title > button {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.widget-dnd label {
+    color: #c6d0f5;
+    margin: 5px;
+    font-size: 1.1rem;
+}
+
+.widget-dnd switch {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.widget-dnd switch slider {
+    border-radius: 5px;
+}
+
+.widget-label {
+    margin: 5px;
+}
+
+.widget-label > label {
+    font-size: 1.1rem;
+}
+
+.widget-mpris {
+    margin: 5px;
+}
+
+.widget-mpris .widget-mpris-player {
+    margin: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+}
+
+.widget-mpris .widget-mpris-player .mpris-background {
+    filter: blur(10px);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay {
+    padding: 16px;
+    background-color: var(--mpris-album-art-overlay);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay button:hover {
+    background: var(--noti-bg-hover);
+    color: #85c1dc;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-album-art {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+    -gtk-icon-size: var(--mpris-album-art-icon-size);
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #ca9ee6;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay .widget-mpris-subtitle {
+    font-size: 1.1rem;
+    color: #c6d0f5;
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button {
+}
+
+.widget-mpris .widget-mpris-player .mpris-overlay > box > button:hover {
+    background-color: var(--mpris-button-hover);
+    color: #85c1dc;
+}
+
+.widget-mpris > box > button {
+}
+
+.widget-mpris > box > button:disabled {
+}
+
+.widget-buttons-grid {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.widget-buttons-grid flowboxchild > button {
+    border-radius: 5px;
+}
+
+.widget-buttons-grid flowboxchild > button.toggle:checked {
+}
+
+.widget-menubar {
+}
+
+.widget-menubar > .menu-button-bar > .start {
+    margin-left: 5px;
+}
+
+.widget-menubar > .menu-button-bar > .end {
+    margin-right: 5px;
+}
+
+.widget-menubar > .menu-button-bar > .widget-menubar-container button {
+    border-radius: 5px;
+    margin: 0 4px;
+}
+
+.widget-menubar > revealer {
+    margin-top: 5px;
+}
+
+.widget-menubar > revealer button {
+    border-radius: 5px;
+    margin: 5px;
+    margin-top: 0;
+}
+
+.widget-volume {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.widget-volume row image {
+    -gtk-icon-size: var(--widget-volume-row-icon-size);
+}
+
+.per-app-volume {
+    background-color: var(--noti-bg);
+    padding: 4px 8px 8px 8px;
+    margin: 0px 5px 5px 5px;
+    border-radius: 5px;
+}
+
+.widget-slider {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.widget-slider label {
+    font-size: inherit;
+}
+
+.widget-backlight {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.widget-inhibitors > label {
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.widget-inhibitors > button {
+    margin: 5px;
+    border-radius: 5px;
+}

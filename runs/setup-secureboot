@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo sbctl create-keys
+sleep 1
+
+sudo sbctl enroll-keys -m
+sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux.EFI
+sudo sbctl sign -s /boot/EFI/Linux/arch-linux-fallback.efi
+sudo sbctl sign -s /boot/vmlinuz-linux
+sudo sbctl sign -s /boot/EFI/systemd/systemd-bootx64.efi
+
+sudo sbctl verify
+sleep 1
+echo "Secure Boot Successfully signed"

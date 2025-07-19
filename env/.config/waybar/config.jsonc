@@ -1,0 +1,97 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": [
+        "custom/stream_status",
+        "hyprland/workspaces",
+        "custom/music",
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "pulseaudio",
+        "battery",
+        "network",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "tray",
+        "custom/lock"
+    ],
+    "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Asia/Kolkata",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%d - %I:%M}",
+        "tooltip-format": "Left Click: Open Notification Center",
+        "on-click": "swaync-client -t -sw"
+    },
+    "network": {
+        "format-wifi": "󰤢 ",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰤠 ",
+        "interval": 5,
+        "tooltip-format": "Left Click: Open Network Manager",
+        //"on-click": "nm-connection-editor",
+        "on-click": "networkmanager_dmenu",
+        // "on-click-right": "pkill nm-applet",
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+    },
+    "memory": {
+        "interval": 30,
+        "format": "  {used:0.1f}G/{total:0.1f}G"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-icons": {
+            "connected": "󰂰",
+            "disconnected": "󰂯",
+            "pending": "󰂮"
+        },
+        "status-format": " {status}",
+        "interval": 5,
+        "tooltip": true,
+        "tooltip-format": "Left Click: Open Bluetooth Manager",
+        //"on-click": "blueman-manager"
+        "on-click": "sh -c 'DMENU_BLUETOOTH_LAUNCHER=\"rofi -dmenu -i -p Bluetooth\" dmenu-bluetooth'"
+    },
+    "custom/lock": {
+        "tooltip": false,
+        //"on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+        "on-click": "wlogout &",
+        "format": "",
+    },
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }} - {{ artist }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
+    },
+    "later": {
+        "format": "<span class='icon'>{icon}</span> <span class='text'>{text}</span>"
+    }
+}

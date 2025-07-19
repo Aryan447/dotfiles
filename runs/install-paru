@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syu --needed base-devel git --noconfirm
+
+if [ ! -d "paru" ]; then
+    git clone https://aur.archlinux.org/paru.git
+fi
+
+pushd paru || exit
+makepkg -si --noconfirm
+popd
+
+sudo rm -rf paru

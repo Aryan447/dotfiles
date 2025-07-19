@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -e  # Exit immediately on any error
+set -o pipefail
+
+echo "Updating package lists..."
+sudo pacman -Syu brightnessctl --noconfirm
+
+echo "Installing required packages..."
+sudo pacman -S --noconfirm ttf-jetbrains-mono-nf nvim zsh
+
+echo "Copying config files from 'env/' to home..."
+if [ -d "env" ]; then
+    pushd env > /dev/null
+    cp -r .config .local .tmux.conf .zshrc .zsh_profile .xprofile "$HOME"/
+    popd > /dev/null
+else
+    echo "'env/' directory not found."
+    exit 1
+fi
+
+echo "Installing Zsh..."
+if [ -f "runs/zsh.sh" ]; then
+    pushd runs > /dev/null
+    ./zsh.sh
+    popd > /dev/null
+else
+    echo "'runs/zsh.sh' not found!"
+fi
+
+if [ -d "zsh" ]; then
+    echo "Copying Zsh configs..."
+    cp -r zsh/.zsh zsh/.zshrc zsh/.zsh_profile "$HOME"/
+else
+    echo "'zsh/' directory not found, skipping extra zsh config."
+fi
+
+echo "Installing Paru..."
+if [ -f "runs/install-paru" ]; then
+    pushd runs > /dev/null
+    ./install-paru
+    popd > /dev/null
+else
+    echo "'runs/install-paru' not found!"
+fi
+
+echo "Installing Zen browser..."
+if [ -f "runs/zen-browser" ]; then
+    pushd runs > /dev/null
+    ./zen-browser
+    popd > /dev/null
+else
+    echo "'runs/zen-browser' not found!"
+fi
+
+echo "Copying user scripts..."
+cp -r .local "$HOME"/
+
+read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
+if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
+    if [ -f "runs/install-hyprland" ]; then
+        pushd runs > /dev/null
+        ./install-hyprland
+        popd > /dev/null
+        echo "Hyprland installation completed"
+    else
+        echo "'runs/install-hyprland' not found!"
+    fi
+else
+    echo "Hyprland installation skipped."
+fi
+
+echo "Fixing permissions..."
+chmod -R u+rw "$HOME/.config" "$HOME/.local/scripts"
+chmod u+rw "$HOME/.zshrc" "$HOME/.zsh_profile" "$HOME/.xprofile" "$HOME/.tmux.conf"
+
+# Install javascript
+pushd runs
+./node
+popd
+
+echo "Package installation and config setup complete!"

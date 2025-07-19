@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+#sudo systemctl stop power-profiles-daemon.service
+#sudo systemctl disable power-profiles-daemon.service
+#sudo systemctl mask power-profiles-daemon.service
+#sudo pacman -Rns --noconfirm power-profiles-daemon
+
+#sudo pacman -Syu tlp tlp-rdw --noconfirm
+#sudo systemctl enable tlp.service
+#sudo systemctl start tlp.service
+
+#sudo tlp-stat s
+paru -Syu --noconfirm --needed auto-cpufreq
+sudo auto-cpufreq --install
+
+sudo pacman -S --noconfirm --needed batsignal
+sudo systemctl daemon-reload
+systemctl --user enable batsignal.service
+systemctl --user start batsignal.service
+
+mkdir -p ~/.config/systemd/user/batsignal.service.d
+printf '[Service]\nExecStart=\nExecStart=batsignal -c 10 -w 30 -f 97' > ~/.config/systemd/user/batsignal.service.d/options.conf
