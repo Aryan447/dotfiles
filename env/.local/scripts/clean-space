@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Clear Paru cache
+paru -Scc
+
+# List orphan packages
+orphans=$(pacman -Qdtq)
+
+if [[ -n "$orphans" ]]; then
+    echo "Orphan packages detected:"
+    echo "$orphans"
+
+    read -p "Do you want to remove orphan packages? [y/N]: " orphanChoice
+
+    if [[ "$orphanChoice" =~ ^[Yy]$ ]]; then
+        sudo pacman -Rns $orphans
+    else
+        echo "Skipping orphan removal."
+    fi
+else
+    echo "No orphan packages found."
+fi
+
+# Vacuum old logs
+sudo journalctl --vacuum-time=1w
+
+# Clean temp folders safely
+echo "Cleaning temporary files..."
+sudo rm -rf /tmp/*
+sudo rm -rf /var/tmp/*
+rm -rf ~/.cache/*
+
+echo "Cleanup completed."
