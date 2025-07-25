@@ -3,6 +3,9 @@
 set -e  # Exit immediately on any error
 set -o pipefail
 
+# set time to use RTC instead of RTC
+sudo timedatectl set-local-rtc 1
+
 echo "Updating package lists..."
 sudo pacman -Syu brightnessctl --noconfirm
 

@@ -1,8 +1,7 @@
 {
-    "layer": "top",
+    "layer": "background",
     "position": "top",
     "modules-left": [
-        "custom/stream_status",
         "hyprland/workspaces",
         "custom/music",
     ],
