@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 pushd ~/.config
-sudo cp -r hypr ghostty nvim waybar wlogout rofi cava networkmanager-dmenu swaync ../dotfiles/env/.config
+sudo cp -r hypr ghostty nvim waybar wlogout rofi cava networkmanager-dmenu swaync chromium-flags.flags ../dotfiles/env/.config
 popd
 
 pushd $HOME
-sudo cp -r .zshrc .zsh_profile .xprofile .tmux.conf .chromium-flags.conf dotfiles/env
+sudo cp -r .zshrc .zsh_profile .xprofile .tmux.conf dotfiles/env
 popd
 
 pushd $HOME/.local
