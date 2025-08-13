@@ -5,7 +5,7 @@ sudo cp -r hypr ghostty nvim waybar wlogout rofi cava networkmanager-dmenu swayn
 popd
 
 pushd $HOME
-sudo cp -r .zshrc .zsh_profile .xprofile .tmux.conf dotfiles/env
+sudo cp -r .zshrc .zsh_profile .xprofile .tmux.conf .chromium-flags.conf dotfiles/env
 popd
 
 pushd $HOME/.local
