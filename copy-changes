@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 pushd ~/.config
-sudo cp -r hypr ghostty nvim waybar wlogout rofi cava networkmanager-dmenu swaync chromium-flags.flags ../dotfiles/env/.config
+sudo cp -r hypr ghostty nvim waybar wlogout rofi cava networkmanager-dmenu swaync chromium-flags.conf ../dotfiles/env/.config
 popd
 
 pushd $HOME
