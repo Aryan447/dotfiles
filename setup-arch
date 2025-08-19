@@ -22,15 +22,6 @@ else
     exit 1
 fi
 
-echo "Installing Zsh..."
-if [ -f "runs/zsh.sh" ]; then
-    pushd runs > /dev/null
-    ./zsh.sh
-    popd > /dev/null
-else
-    echo "'runs/zsh.sh' not found!"
-fi
-
 if [ -d "zsh" ]; then
     echo "Copying Zsh configs..."
     cp -r zsh/.zsh zsh/.zshrc zsh/.zsh_profile "$HOME"/
@@ -81,5 +72,14 @@ chmod u+rw "$HOME/.zshrc" "$HOME/.zsh_profile" "$HOME/.xprofile" "$HOME/.tmux.co
 pushd runs
 ./node
 popd
+
+echo "Installing Zsh..."
+if [ -f "runs/zsh.sh" ]; then
+    pushd runs > /dev/null
+    ./zsh.sh
+    popd > /dev/null
+else
+    echo "'runs/zsh.sh' not found!"
+fi
 
 echo "Package installation and config setup complete!"
