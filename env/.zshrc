@@ -109,6 +109,9 @@ source ~/.zsh_profile
 # Created by `pipx` on 2025-07-11 12:58:26
 export PATH="$PATH:/home/aryan/.local/bin"
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # bun completions
 [ -s "/home/aryan/.bun/_bun" ] && source "/home/aryan/.bun/_bun"
 
