@@ -10,76 +10,53 @@ echo "Updating package lists..."
 sudo pacman -Syu brightnessctl --noconfirm
 
 echo "Installing required packages..."
-sudo pacman -S --noconfirm ttf-jetbrains-mono-nf nvim zsh
-
-echo "Copying config files from 'env/' to home..."
-if [ -d "env" ]; then
-    pushd env > /dev/null
-    cp -r .config .local .tmux.conf .zshrc .zsh_profile .xprofile "$HOME"/
-    popd > /dev/null
-else
-    echo "'env/' directory not found."
-    exit 1
-fi
-
-if [ -d "zsh" ]; then
-    echo "Copying Zsh configs..."
-    cp -r zsh/.zsh zsh/.zshrc zsh/.zsh_profile "$HOME"/
-else
-    echo "'zsh/' directory not found, skipping extra zsh config."
-fi
+sudo pacman -S --noconfirm ttf-jetbrains-mono-nf nvim
 
 echo "Installing Paru..."
-if [ -f "runs/install-paru" ]; then
-    pushd runs > /dev/null
-    ./install-paru
-    popd > /dev/null
-else
-    echo "'runs/install-paru' not found!"
-fi
+pushd runs
+./install-paru
+popd
 
 echo "Installing Zen browser..."
-if [ -f "runs/zen-browser" ]; then
-    pushd runs > /dev/null
-    ./zen-browser
-    popd > /dev/null
-else
-    echo "'runs/zen-browser' not found!"
-fi
+pushd runs
+./zen-browser
+popd
 
-echo "Copying user scripts..."
-cp -r .local "$HOME"/
+echo "Installing Ghostty.."
+pushd runs
+./ghostty
+popd
 
-read -p "Do you want to install Hyprland? (Y/N): " choicehyprland
-if [[ "$choicehyprland" =~ ^[Yy]$ ]]; then
-    if [ -f "runs/install-hyprland" ]; then
-        pushd runs > /dev/null
-        ./install-hyprland
-        popd > /dev/null
-        echo "Hyprland installation completed"
-    else
-        echo "'runs/install-hyprland' not found!"
-    fi
-else
-    echo "Hyprland installation skipped."
-fi
+pushd runs
+./tmux
+popd
 
-echo "Fixing permissions..."
-chmod -R u+rw "$HOME/.config" "$HOME/.local/scripts"
-chmod u+rw "$HOME/.zshrc" "$HOME/.zsh_profile" "$HOME/.xprofile" "$HOME/.tmux.conf"
+echo "Installing Hyperland"
+pushd runs
+./setup-hyprland.sh
+popd
 
 # Install javascript
 pushd runs
 ./node
 popd
 
-echo "Installing Zsh..."
-if [ -f "runs/zsh.sh" ]; then
-    pushd runs > /dev/null
-    ./zsh.sh
-    popd > /dev/null
-else
-    echo "'runs/zsh.sh' not found!"
-fi
+# Install python
+pushd runs
+./python
+popd
+
+pushd runs
+./vlc
+popd
+
+pushd runs
+./zsh.sh
+popd
+
+echo "Copying config files from 'env/' to home..."
+pushd env
+cp -r .config .local .tmux.conf .zshrc .zsh_profile .xprofile $HOME
+popd
 
 echo "Package installation and config setup complete!"
