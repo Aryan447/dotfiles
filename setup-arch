@@ -4,7 +4,7 @@ set -e  # Exit immediately on any error
 set -o pipefail
 
 # set time to use RTC instead of RTC
-sudo timedatectl set-local-rtc 1
+# sudo timedatectl set-local-rtc 1
 
 echo "Updating package lists..."
 sudo pacman -Syu brightnessctl --noconfirm
@@ -15,48 +15,28 @@ sudo pacman -S --noconfirm ttf-jetbrains-mono-nf nvim
 echo "Installing Paru..."
 pushd runs
 ./install-paru
-popd
 
 echo "Installing Zen browser..."
-pushd runs
 ./zen-browser
-popd
 
 echo "Installing Ghostty.."
-pushd runs
 ./ghostty
-popd
 
-pushd runs
 ./tmux
-popd
 
 echo "Installing Hyperland"
-pushd runs
 ./setup-hyprland.sh
-popd
 
 # Install javascript
-pushd runs
 ./node
-popd
 
 # Install python
-pushd runs
 ./python
-popd
 
-pushd runs
 ./vlc
-popd
 
-pushd runs
 ./zsh.sh
-popd
 
-echo "Copying config files from 'env/' to home..."
-pushd env
-cp -r .config .local .tmux.conf .zshrc .zsh_profile .xprofile $HOME
-popd
+./copy-changes
 
 echo "Package installation and config setup complete!"

@@ -5,6 +5,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/scripts:$PATH"
 alias tms="$HOME/.local/scripts/tmux-sessionizer.sh"
 bindkey -s ^f "tms"
+alias lc="$HOME/.local/scripts/leetcode"
+bindkey -s ^f "lc"
 export GHOSTTY_BACKEND=epoll
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -118,3 +120,5 @@ eval "$(zoxide init zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.local/bin/env"
