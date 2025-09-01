@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-sudo pacman -S zoxide
+sudo pacman -S --no-confirm --needed zoxide
+paru -S --no-confirm --needed localsend-bin
