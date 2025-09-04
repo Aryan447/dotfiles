@@ -1,2 +1,0 @@
-alias vim="nvim"
-export PATH="$HOME/.local/scripts:$PATH"

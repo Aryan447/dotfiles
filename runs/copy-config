@@ -2,5 +2,5 @@
 
 echo "Copying config files from 'env/' to home..."
 pushd ../env
-cp -r .config .local .tmux.conf .zshrc .zsh_profile .xprofile $HOME
+cp -r .config .local .tmux.conf .zshrc .xprofile $HOME
 popd
