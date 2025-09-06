@@ -1,0 +1,5 @@
+#!/bin/usr/env bash
+
+# use this command if you have systemd-boot instead of grub or for other boot options
+# For grub or for other boot options please consider looking online
+sudo -E nvim /boot/loader/loader.conf

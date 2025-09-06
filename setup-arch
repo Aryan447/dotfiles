@@ -10,7 +10,7 @@ echo "Updating package lists..."
 sudo pacman -Syu brightnessctl --noconfirm
 
 echo "Installing required packages..."
-sudo pacman -S --noconfirm ttf-jetbrains-mono-nf nvim
+sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd nvim
 
 echo "Installing Paru..."
 pushd runs

@@ -8,6 +8,8 @@ bindkey -s ^f "tms"
 alias lc="$HOME/.local/scripts/leetcode"
 bindkey -s ^f "lc"
 export GHOSTTY_BACKEND=epoll
+export EDITOR='nvim'
+alias vim="nvim"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -106,7 +108,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.zsh_profile
 
 # Created by `pipx` on 2025-07-11 12:58:26
 export PATH="$PATH:/home/aryan/.local/bin"
@@ -122,4 +123,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 . "$HOME/.local/bin/env"
-eval "$(~/.local/bin/mise activate)"
+
+# Mise
+#eval "$(~/.local/bin/mise activate)"
