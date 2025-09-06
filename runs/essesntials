@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed zoxide yazi
+sudo pacman -S --noconfirm --needed zoxide yazi fastfetch
 paru -S --noconfirm --needed localsend-bin
