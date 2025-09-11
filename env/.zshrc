@@ -6,9 +6,10 @@ export PATH="$HOME/.local/scripts:$PATH"
 alias tms="$HOME/.local/scripts/tmux-sessionizer.sh"
 bindkey -s ^f "tms"
 alias lc="$HOME/.local/scripts/leetcode"
-bindkey -s ^f "lc"
 export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
+export GIT_EDITOR='nvim'
+
 alias vim="nvim"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -122,7 +123,11 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
 . "$HOME/.local/bin/env"
 
 # Mise
-#eval "$(~/.local/bin/mise activate)"
+eval "$(mise activate zsh)"

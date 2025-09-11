@@ -9,8 +9,8 @@ confirm-close-surface=false
 clipboard-read = allow
 clipboard-write = allow
 
-#shell-integration-features = no-cursor,no-sudo,no-title
-#gtk-titlebar = false
+shell-integration-features = no-cursor,no-sudo,no-title
+gtk-titlebar = false
 
 # what is a prefix?
 # keybind = ctrl+d=scroll_page_fractional:0.5
