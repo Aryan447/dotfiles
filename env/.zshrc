@@ -4,7 +4,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/scripts:$PATH"
 alias tms="$HOME/.local/scripts/tmux-sessionizer.sh"
-bindkey -s ^f "tms"
+bindkey -s ^f "tms "
 alias lc="$HOME/.local/scripts/leetcode"
 export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
@@ -130,4 +130,4 @@ eval "$(uvx --generate-shell-completion zsh)"
 . "$HOME/.local/bin/env"
 
 # Mise
-eval "$(mise activate zsh)"
+# eval "$(mise activate zsh)"
