@@ -31,7 +31,7 @@
         "timezone": "Asia/Kolkata",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%d - %I:%M}",
-        "tooltip-format": "Left Click: Open Notification Center",
+        "tooltip-format": "     {:%A, %D - %H:%M}\nLeft Click: Open Notification Center",
         "on-click": "swaync-client -t -sw"
     },
     "network": {

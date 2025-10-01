@@ -37,6 +37,10 @@ echo "Installing Hyperland"
 
 ./zsh.sh
 
-./copy-changes
+./git-config
+
+./copy-config
+
+./essentials
 
 echo "Package installation and config setup complete!"

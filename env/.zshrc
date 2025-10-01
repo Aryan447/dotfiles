@@ -10,7 +10,7 @@ export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
-alias vim="nvim"
+alias vim="nvim ."
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -130,4 +130,4 @@ eval "$(uvx --generate-shell-completion zsh)"
 . "$HOME/.local/bin/env"
 
 # Mise
-# eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
