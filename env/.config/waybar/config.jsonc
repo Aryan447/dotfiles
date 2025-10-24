@@ -41,7 +41,8 @@
         "interval": 5,
         "tooltip-format": "Left Click: Open Network Manager",
         //"on-click": "nm-connection-editor",
-        "on-click": "networkmanager_dmenu",
+        // "on-click": "networkmanager_dmenu",
+        "on-click": "ghostty -e impala",
         // "on-click-right": "pkill nm-applet",
     },
     "cpu": {
@@ -74,7 +75,8 @@
         "tooltip": true,
         "tooltip-format": "Left Click: Open Bluetooth Manager",
         //"on-click": "blueman-manager"
-        "on-click": "sh -c 'DMENU_BLUETOOTH_LAUNCHER=\"rofi -dmenu -i -p Bluetooth\" dmenu-bluetooth'"
+        // "on-click": "sh -c 'DMENU_BLUETOOTH_LAUNCHER=\"rofi -dmenu -i -p Bluetooth\" dmenu-bluetooth'",
+        "on-click": "blueberry",
     },
     "custom/lock": {
         "tooltip": false,

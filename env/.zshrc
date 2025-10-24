@@ -3,14 +3,22 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/scripts:$PATH"
-alias tms="$HOME/.local/scripts/tmux-sessionizer.sh"
+alias tms="$HOME/.local/scripts/tmux-sessionizer"
 bindkey -s ^f "tms "
 alias lc="$HOME/.local/scripts/leetcode"
 export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
-alias vim="nvim ."
+# Setup up fzf key binding and fuzzy completion
+source <(fzf --zsh)
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVESIZE=10000
+setopt appendhistory
+
+alias vim="nvim"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
