@@ -138,4 +138,4 @@ eval "$(uvx --generate-shell-completion zsh)"
 . "$HOME/.local/bin/env"
 
 # Mise
-eval "$(mise activate zsh)"
+# eval "$(mise activate zsh)"

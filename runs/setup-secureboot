@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo pacman -S sbctl --noconfirm --needed
 sudo sbctl create-keys
 sleep 1
 

@@ -35,12 +35,12 @@ echo "Installing Hyperland"
 
 ./vlc
 
-./zsh.sh
-
 ./git-config
 
 ./copy-config
 
 ./essentials
+
+./zsh.sh
 
 echo "Package installation and config setup complete!"
