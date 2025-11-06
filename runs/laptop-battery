@@ -19,4 +19,4 @@ systemctl --user enable batsignal.service
 systemctl --user start batsignal.service
 
 mkdir -p ~/.config/systemd/user/batsignal.service.d
-printf '[Service]\nExecStart=\nExecStart=batsignal -c 10 -w 30 -f 97' > ~/.config/systemd/user/batsignal.service.d/options.conf
+printf '[Service]\nExecStart=\nExecStart=batsignal -c 10 -w 30 -f 100' > ~/.config/systemd/user/batsignal.service.d/options.conf
