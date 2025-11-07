@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+paru -S --noconfirm --needed zen-browser-bin google-chrome-stable brave-browser

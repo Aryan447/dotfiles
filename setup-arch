@@ -17,7 +17,7 @@ pushd runs
 ./install-paru
 
 echo "Installing Zen browser..."
-./zen-browser
+./browser
 
 echo "Installing Ghostty.."
 ./ghostty

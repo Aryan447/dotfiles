@@ -20,3 +20,5 @@ gtk-titlebar = false
 keybind = ctrl+enter=unbind
 # keybind = ctrl+shift+p=unbind
 keybind = ctrl+shift+o=unbind
+keybind = ctrl+shift+p=unbind
+keybind = ctrl+shift+n=unbind
