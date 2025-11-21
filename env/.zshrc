@@ -143,3 +143,13 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 compdef _files java
 
+fzf-paru-install() {
+    local pkg
+    pkg=$(paru -Slq && paru -Saql | fzf --preview 'paru -Si {} || paru -Sia {}' --height=45%) || return
+    BUFFER="paru -S $pkg"
+    CURSOR=$#BUFFER
+}
+
+zle -N fzf-paru-install
+bindkey '^P' fzf-paru-install
+
