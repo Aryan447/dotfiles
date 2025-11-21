@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep rust go lazygit
-paru -S --noconfirm --needed localsend-bin
+paru -S --noconfirm --needed localsend-bin libreoffice

@@ -10,8 +10,6 @@ export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
-# Setup up fzf key binding and fuzzy completion
-source <(fzf --zsh)
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -118,6 +116,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Setup up fzf key binding and fuzzy completion
+source <(fzf --zsh)
+
 # Created by `pipx` on 2025-07-11 12:58:26
 export PATH="$PATH:/home/aryan/.local/bin"
 
@@ -139,3 +140,6 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 # Mise
 # eval "$(mise activate zsh)"
+
+compdef _files java
+

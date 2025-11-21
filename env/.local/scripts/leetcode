@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PROJECT_DIR=~/dev/py_projects
+PROJECT_DIR=~/dev/java_projects
 [ ! -d "$PROJECT_DIR" ] && echo "Directory not found: $PROJECT_DIR" && exit 1
 
 SESSION="leetcode"
@@ -8,7 +8,7 @@ SESSION="leetcode"
 tmux has-session -t "$SESSION" 2>/dev/null
 if [ $? != 0 ]; then
     # Window 1: nvim leetcode.py
-    tmux new-session -d -s "$SESSION" -c "$PROJECT_DIR" "nvim leetcode.py"
+    tmux new-session -d -s "$SESSION" -c "$PROJECT_DIR" "nvim leetcode.java"
 
     # Window 2: terminal
     tmux new-window -t "$SESSION:2" -c "$PROJECT_DIR"
