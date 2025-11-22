@@ -76,7 +76,8 @@
         "tooltip-format": "Left Click: Open Bluetooth Manager",
         //"on-click": "blueman-manager"
         // "on-click": "sh -c 'DMENU_BLUETOOTH_LAUNCHER=\"rofi -dmenu -i -p Bluetooth\" dmenu-bluetooth'",
-        "on-click": "blueberry",
+        // "on-click": "blueberry",
+        "on-click": "ghostty -e bluetui",
     },
     "custom/lock": {
         "tooltip": false,
