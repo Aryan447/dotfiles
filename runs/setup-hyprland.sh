@@ -8,4 +8,4 @@ fi
 
 sudo systemctl enable NetworkManager
 sudo systemctl start NetworkManager
-sudo systemctl enable iwd
+# sudo systemctl enable iwd

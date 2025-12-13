@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+gh auth switch -u Aryan447 >/dev/null
+gh auth setup-git >/dev/null
+cd $HOME/dev/AML-XGBoost-Swarm-Optimization
+git config user.name "Aryan447"
+git config user.email "singharyan4477@gmail.com"
+echo "Switched to YOUR identity in main repo"
+pwd
