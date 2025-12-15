@@ -1,5 +1,6 @@
 [dmenu]
-dmenu_command = rofi -dmenu
+dmenu_command = rofi-wayland -dmenu
+dmenu_command = rofi -dmenu -i -theme-str '* { font: "JetBrainsMono Nerd Font 14"; }'
 # Note that dmenu_command can contain arguments as well like:
 # `dmenu_command = rofi -i -theme nmdm`
 # `dmenu_command = rofi -width 30 -i`
@@ -17,7 +18,7 @@ highlight_bold = True
 # Remove extra spacing from display
 compact = False
 # Pinentry command e.g. `pinentry-gtk`
-pinentry =pinentry-qt
+pinentry =
 # String of 4 unicode characters representing 1-4 bars strength
 wifi_chars = ▂▄▆█
 # Characters representing signal strength as an icon
@@ -33,7 +34,7 @@ format = {name}  {sec}  {bars}
 #  * {max_len_name} and {max_len_sec} are the maximum lengths of {name} / {sec}
 #    respectively and may be useful for formatting.
 # List saved connections
-list_saved = False
+list_saved = True
 # Custom prompt
 prompt = Networks
 
