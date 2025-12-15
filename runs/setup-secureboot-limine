@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+sudo pacman -S --needed --noconfirm sbctl
+
+sudo sbctl create-keys || true
+
+sudo sbctl enroll-keys -m
+
+sudo sbctl sign -s /boot/vmlinuz-linux
+sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
+sudo sbctl sign -s /boot/EFI/Linux/omarchy_linux.efi
+sudo sbctl sign -s /boot/EFI/limine/BOOTIA32.EFI
+sudo sbctl sign -s /boot/EFI/limine/BOOTX64.EFI
+sudo sbctl sign -s /boot/EFI/limine/limine_x64.efi
+
+sudo sbctl verify
+
+echo "Secure Boot signing for Limine completed successfully"
