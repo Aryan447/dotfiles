@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-sudo pacman -S jdk-openjdk --noconfirm --needed
+sudo pacman -S jdk-openjdk maven --noconfirm --needed
+sudo yay -S jdtls --noconfirm --needed

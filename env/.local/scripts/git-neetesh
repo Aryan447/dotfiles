@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
+set -e
 
-gh auth switch -u 1901neetesh >/dev/null
-gh auth setup-git >/dev/null
-cd ~/temp-dev/AML-XGBoost-Swarm-Optimization
 git config user.name "1901neetesh"
 git config user.email "neeteshjatav11@gmail.com"
-echo "Switched to FRIEND identity in fork repo"
+
+gh auth switch -u 1901neetesh >/dev/null
+
+echo "Switched to FRIEND identity (fork repo)"
 pwd

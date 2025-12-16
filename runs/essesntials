@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-
-sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep rust go lazygit
+sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep lazygit
 paru -S --noconfirm --needed localsend-bin libreoffice
+# paru -S --noconfirm --needed oniux
+
+# for disk usage
+paru -S --noconfirm --needed dust
+
+# media players
+paru -S --noconfirm --needed mpv mpv-mpris

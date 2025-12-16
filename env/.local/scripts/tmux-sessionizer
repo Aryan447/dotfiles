@@ -27,8 +27,8 @@ if [ $? != 0 ]; then
     # Window 1: shell with clear
     tmux send-keys -t "$SESSION:1" clear C-m
 
-    # Window 2: shell
-    tmux new-window -t "$SESSION:2" -c "$DIR"
+    # Window 2: scratch
+    tmux new-window -t "$SESSION:2" -n scratch -c "$DIR"
 fi
 
 # Check if already inside a tmux session
