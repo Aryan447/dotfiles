@@ -1,20 +1,42 @@
 #!/usr/bin/env bash
 
+# run these two commands before signing the secure boot
+# sudo sbctl create-keys
+# sudo sbctl enroll-keys -m
+# sudo sbctl status
+# sudo nvim /etc/mkinitcpio.conf
+
+
+# Add "btrfs-overlayfs" to the HOOKS array
+# Before:
+# HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck)
+# After:
+# HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck btrfs-overlayfs)
+
+# sudo limine-mkinitcpio
+# sudo systemctl reboot --firmware-setup
+# turn on the secure boot
+
+# if above steps doesnt turn on the secure boot then sign the bootloader and extra things like below
+
 set -e
 
 sudo pacman -S --needed --noconfirm sbctl
 
 sudo sbctl create-keys || true
-
 sudo sbctl enroll-keys -m
 
-sudo sbctl sign -s /boot/vmlinuz-linux
+# UEFI fallback (firmware entry)
 sudo sbctl sign -s /boot/EFI/BOOT/BOOTX64.EFI
-sudo sbctl sign -s /boot/EFI/Linux/omarchy_linux.efi
-sudo sbctl sign -s /boot/EFI/limine/BOOTIA32.EFI
+
+# Limine loader
 sudo sbctl sign -s /boot/EFI/limine/BOOTX64.EFI
 sudo sbctl sign -s /boot/EFI/limine/limine_x64.efi
 
+# UKI (what Limine boots)
+sudo sbctl sign -s /boot/EFI/Linux/omarchy_linux.efi
+
 sudo sbctl verify
 
-echo "Secure Boot signing for Limine completed successfully"
+echo "Secure Boot (Limine) signing complete"
+
