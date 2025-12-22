@@ -1,4 +1,4 @@
-$!/usr/bin/env bash
+#!/usr/bin/env bash
 
 mise implode
 rm -rf ~/.config/mise ~/.local/state/mise ~/.local/share/mise ~/.cache/mise
