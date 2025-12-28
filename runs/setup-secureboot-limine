@@ -39,4 +39,3 @@ sudo sbctl sign -s /boot/EFI/Linux/omarchy_linux.efi
 sudo sbctl verify
 
 echo "Secure Boot (Limine) signing complete"
-

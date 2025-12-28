@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 sudo pacman -S jdk-openjdk --noconfirm --needed
+sudo pacman -S jdtls --noconfirm --needed

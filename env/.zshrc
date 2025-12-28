@@ -4,7 +4,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/scripts:$PATH"
 alias tms="$HOME/.local/scripts/tmux-sessionizer"
-bindkey -s ^f "tms "
 alias lc="$HOME/.local/scripts/leetcode"
 export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
@@ -118,6 +117,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Setup up fzf key binding and fuzzy completion
 source <(fzf --zsh)
+
+bindkey -s ^f "tms "
 
 # Created by `pipx` on 2025-07-11 12:58:26
 export PATH="$PATH:/home/aryan/.local/bin"
