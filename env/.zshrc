@@ -2,9 +2,6 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$HOME/.local/scripts:$PATH"
-alias tms="$HOME/.local/scripts/tmux-sessionizer"
-alias lc="$HOME/.local/scripts/leetcode"
 export GHOSTTY_BACKEND=epoll
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
@@ -118,6 +115,10 @@ source $ZSH/oh-my-zsh.sh
 # Setup up fzf key binding and fuzzy completion
 source <(fzf --zsh)
 
+# Custom Scripts
+export PATH="$HOME/.local/scripts:$PATH"
+alias tms="$HOME/.local/scripts/tmux-sessionizer"
+alias lc="$HOME/.local/scripts/leetcode"
 bindkey -s ^f "tms "
 
 # Created by `pipx` on 2025-07-11 12:58:26
@@ -144,13 +145,13 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 compdef _files java
 
-fzf-paru-install() {
-    local pkg
-    pkg=$(paru -Slq && paru -Saql | fzf --preview 'paru -Si {} || paru -Sia {}' --height=45%) || return
-    BUFFER="paru -S $pkg"
-    CURSOR=$#BUFFER
-}
-
-zle -N fzf-paru-install
-bindkey '^P' fzf-paru-install
+# fzf-paru-install() {
+#     local pkg
+#     pkg=$(paru -Slq && paru -Saql | fzf --preview 'paru -Si {} || paru -Sia {}' --height=45%) || return
+#     BUFFER="paru -S $pkg"
+#     CURSOR=$#BUFFER
+# }
+#
+# zle -N fzf-paru-install
+# bindkey '^P' fzf-paru-install
 
