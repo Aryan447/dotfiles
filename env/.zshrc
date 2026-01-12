@@ -119,7 +119,7 @@ source <(fzf --zsh)
 export PATH="$HOME/.local/scripts:$PATH"
 alias tms="$HOME/.local/scripts/tmux-sessionizer"
 alias lc="$HOME/.local/scripts/leetcode"
-bindkey -s ^f "tms "
+bindkey -s ^f "tms\n"
 
 # Created by `pipx` on 2025-07-11 12:58:26
 export PATH="$PATH:/home/aryan/.local/bin"
