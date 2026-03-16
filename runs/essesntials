@@ -2,3 +2,6 @@
 
 sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep rust go lazygit
 paru -S --noconfirm --needed localsend-bin libreoffice oniux
+
+# for disk usage
+paru -S --noconfirm --needed dust
