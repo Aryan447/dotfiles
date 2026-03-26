@@ -291,3 +291,5 @@ img2png() {
     "${img%.*}-optimized.png"
 }
 
+# C
+# alias cc-dev='gcc -Wall -Wextra -std=c11 -g -fsanitize=address'
