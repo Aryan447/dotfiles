@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep rust go lazygit
+sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep lazygit
 paru -S --noconfirm --needed localsend-bin libreoffice oniux
 
 # for disk usage
