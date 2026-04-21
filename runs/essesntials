@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 sudo pacman -S --noconfirm --needed zoxide yazi fastfetch ripgrep lazygit
-paru -S --noconfirm --needed localsend-bin libreoffice
+paru -S --noconfirm --needed localsend-bin libreoffice oniux
 
 # for disk usage
 paru -S --noconfirm --needed dust
-
-# oniux
-cargo install --git https://gitlab.torproject.org/tpo/core/oniux
