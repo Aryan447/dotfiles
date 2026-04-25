@@ -10,7 +10,11 @@ go install github.com/air-verse/air@latest
 sudo pacman -S --noconfirm --needed hyperfine valgrind
 
 # Rust
-sudo pacman -S --noconfirm --needed rust-src rust
+# sudo pacman -S --noconfirm --needed rust-src rust
+# sudo pacman -S --noconfirm --needed rustup
+# rustup toolchain install stable
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+# rustup component add rust-src
 
 # Node/Bun
 sudo pacman -S --noconfirm nodejs npm
