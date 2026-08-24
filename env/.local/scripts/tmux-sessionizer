@@ -1,39 +1,180 @@
 #!/usr/bin/env bash
 
-# Set your projects base directory
-PROJECTS_DIR=~/dev
+# =========================
+# Configuration
+# =========================
 
-# Take optional search term from CLI arg
+CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
+CONFIG_FILE="$CONFIG_DIR/tmux-sessionizer.conf"
+
+# Defaults
+TS_SEARCH_PATHS=(
+    "$HOME/dev"
+)
+
+# Load user configuration
+if [[ -f "$CONFIG_FILE" ]]; then
+    source "$CONFIG_FILE"
+fi
+
+
+# =========================
+# Helpers
+# =========================
+
+has_session() {
+    tmux has-session -t "$1" 2>/dev/null
+}
+
+switch_to() {
+    if [[ -n "$TMUX" ]]; then
+        tmux switch-client -t "$1"
+    else
+        tmux attach-session -t "$1"
+    fi
+}
+
+find_projects() {
+    # Existing tmux sessions
+    if [[ -n "$TMUX" ]]; then
+        local current_session
+        current_session=$(tmux display-message -p '#S')
+
+        tmux list-sessions -F '[TMUX] #{session_name}' 2>/dev/null |
+            grep -vFx "[TMUX] $current_session"
+    else
+        tmux list-sessions -F '[TMUX] #{session_name}' 2>/dev/null
+    fi
+
+    # Project directories
+    for path in "${TS_SEARCH_PATHS[@]}"; do
+        [[ -d "$path" ]] || continue
+
+        find "$path" \
+            -mindepth 1 \
+            -maxdepth "${TS_MAX_DEPTH:-1}" \
+            -path '*/.git' -prune \
+            -o -type d -print
+    done
+}
+
+hydrate() {
+    local session="$1"
+    local directory="$2"
+
+    if [[ -f "$directory/.tms" ]]; then
+        tmux send-keys -t "$session" \
+            "source '$directory/.tms'" C-m
+
+    elif [[ -f "$directory/.tmux-sessionizer" ]]; then
+        tmux send-keys -t "$session" \
+            "source '$directory/.tmux-sessionizer'" C-m
+
+    elif [[ -f "$HOME/.tmux-sessionizer" ]]; then
+        tmux send-keys -t "$session" \
+            "source '$HOME/.tmux-sessionizer'" C-m
+    fi
+}
+
+# =========================
+# Session commands
+# =========================
+
+if [[ "$1" == "-s" || "$1" == "--session" ]]; then
+    INDEX="$2"
+
+    if [[ -z "$INDEX" ]]; then
+        echo "Usage: tms -s <index>"
+        exit 1
+    fi
+
+    if [[ -z "${TS_SESSION_COMMANDS[*]}" ]]; then
+        echo "No TS_SESSION_COMMANDS configured."
+        exit 1
+    fi
+
+    COMMAND="${TS_SESSION_COMMANDS[$INDEX]}"
+
+    if [[ -z "$COMMAND" ]]; then
+        echo "Invalid session command index: $INDEX"
+        exit 1
+    fi
+
+    if [[ -z "$TMUX" ]]; then
+        echo "Session commands must be run inside tmux."
+        exit 1
+    fi
+
+    SESSION=$(tmux display-message -p '#S')
+    WINDOW=$((69 + INDEX))
+
+    if tmux has-session -t "$SESSION:$WINDOW" 2>/dev/null; then
+        tmux select-window -t "$SESSION:$WINDOW"
+    else
+        tmux new-window \
+            -d \
+            -t "$SESSION:$WINDOW" \
+            "$COMMAND"
+
+        tmux select-window -t "$SESSION:$WINDOW"
+    fi
+
+    exit 0
+fi
+
+
+# =========================
+# Selection
+# =========================
+
 SEARCH="$1"
 
-# Find matching directory
-if [ -n "$SEARCH" ]; then
-    DIR=$(find "$PROJECTS_DIR" -mindepth 1 -maxdepth 1 -type d | fzf --filter="$SEARCH" | head -n 1)
+if [[ -n "$SEARCH" ]]; then
+    SELECTED=$(find_projects | grep -i -- "$SEARCH" | head -n 1)
 else
-    DIR=$(find "$PROJECTS_DIR" -mindepth 1 -maxdepth 1 -type d | fzf)
+    SELECTED=$(find_projects | fzf)
 fi
 
-# Exit if no directory selected
-[ -z "$DIR" ] && echo "No project selected." && exit 1
+[[ -z "$SELECTED" ]] && exit 0
 
-# Generate a session name from directory name
-SESSION=$(basename "$DIR" | tr . _)
 
-# If session doesn't exist, create it
-tmux has-session -t "$SESSION" 2>/dev/null
-if [ $? != 0 ]; then
-    tmux new-session -d -s "$SESSION" -c "$DIR"
+# =========================
+# Existing tmux session
+# =========================
 
-    # Window 1: shell with clear
-    tmux send-keys -t "$SESSION:1" clear C-m
+if [[ "$SELECTED" =~ ^\[TMUX\]\ (.+)$ ]]; then
+    SESSION="${BASH_REMATCH[1]}"
 
-    # Window 2: scratch
-    tmux new-window -t "$SESSION:2" -n scratch -c "$DIR"
+    switch_to "$SESSION"
+    exit 0
 fi
 
-# Check if already inside a tmux session
-if [ -n "$TMUX" ]; then
-    tmux switch-client -t "$SESSION:1"
-else
-    tmux attach -t "$SESSION:1"
+
+# =========================
+# Project selected
+# =========================
+
+PROJECT="$SELECTED"
+
+SESSION=$(basename "$PROJECT" | tr '.' '_')
+
+
+# =========================
+# Create session
+# =========================
+
+if ! has_session "$SESSION"; then
+    tmux new-session \
+        -d \
+        -s "$SESSION" \
+        -c "$PROJECT"
+
+    hydrate "$SESSION" "$PROJECT"
 fi
+
+
+# =========================
+# Switch
+# =========================
+
+switch_to "$SESSION"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Every project gets:
+# 1. scratch window
+# 2. Neovim
+
+tmux new-window -dn scratch
+nvim .
+clear
