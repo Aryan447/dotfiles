@@ -7,3 +7,21 @@
 tmux new-window -dn scratch
 nvim .
 clear
+
+# Can also do advanced things like this:
+# tmux new-window -dn scratch
+#
+# tmux new-window \
+# -dn docker \
+# -c "$(pwd)" \
+# 'docker start todo-postgres 2>/dev/null || true; docker logs -f todo-postgres'
+#
+# tmux new-window \
+#     -dn spring-boot \
+#     -c "$(pwd)" \
+#     './mvnw spring-boot:run'
+#
+#
+# nvim .
+# clear
+
