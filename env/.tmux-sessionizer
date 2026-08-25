@@ -9,19 +9,20 @@ nvim .
 clear
 
 # Can also do advanced things like this:
+# #!/usr/bin/env bash
+#
 # tmux new-window -dn scratch
 #
 # tmux new-window \
-# -dn docker \
-# -c "$(pwd)" \
-# 'docker start todo-postgres 2>/dev/null || true; docker logs -f todo-postgres'
+#     -dn postgres \
+#     -c "$(pwd)" \
+#     'pkexec bash -c '\''docker start todo-postgres 2>/dev/null || true; exec docker logs -f todo-postgres'\'''
 #
 # tmux new-window \
 #     -dn spring-boot \
 #     -c "$(pwd)" \
 #     './mvnw spring-boot:run'
 #
-#
 # nvim .
 # clear
-
+#
