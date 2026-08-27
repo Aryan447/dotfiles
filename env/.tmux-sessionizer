@@ -13,17 +13,14 @@ clear
 #
 # tmux new-window -dn scratch
 #
-# tmux new-window \
-#     -dn postgres \
-#     -c "$(pwd)" \
-#     'pkexec bash -c '\''docker start todo-postgres 2>/dev/null || true; exec docker logs -f todo-postgres'\''; exec zsh'
+# tmux new-window -dn postgres -c "$(pwd)"
+# tmux send-keys -t postgres \
+#     'pkexec bash -c '\''docker start todo-postgres 2>/dev/null || true; exec docker logs -f todo-postgres'\''' C-m
 #
-# tmux new-window \
-#     -dn spring-boot \
-#     -c "$(pwd)" \
-#     'set -a; source .env; set +a; ./mvnw spring-boot:run; exec zsh'
+# tmux new-window -dn spring-boot -c "$(pwd)"
+# tmux send-keys -t spring-boot \
+#     'set -a; source .env; set +a; ./mvnw spring-boot:run' C-m
 #
 # nvim .
 # clear
-#
 
