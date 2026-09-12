@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+echo "This will completely remove Android Studio and Android development data."
+read -rp "Continue? [y/N] " confirm
+
+[[ "$confirm" =~ ^[Yy]$ ]] || exit 0
+
+echo "Stopping Android Studio processes..."
+pkill -f 'android-studio' 2>/dev/null || true
+pkill -f 'studio' 2>/dev/null || true
+pkill -f 'qemu-system' 2>/dev/null || true
+
+echo "Removing Android Studio installations..."
+
+# Common manual installation locations
+sudo rm -rf \
+    /opt/android-studio \
+    /opt/Android\ Studio \
+    /usr/local/android-studio \
+    "$HOME/android-studio" \
+    "$HOME/Android Studio"
+
+# AUR / pacman installations
+if pacman -Qq android-studio &>/dev/null; then
+    sudo pacman -Rns --noconfirm android-studio
+fi
+
+if command -v yay &>/dev/null && yay -Qq android-studio &>/dev/null; then
+    yay -Rns --noconfirm android-studio
+fi
+
+echo "Removing Android SDK..."
+rm -rf \
+    "$HOME/Android/Sdk" \
+    "$HOME/Android/sdk" \
+    "$HOME/.android"
+
+# Remove entire Android directory if now empty
+rmdir "$HOME/Android" 2>/dev/null || true
+
+echo "Removing Android Studio configuration and caches..."
+rm -rf \
+    "$HOME/.config/Google/AndroidStudio"* \
+    "$HOME/.cache/Google/AndroidStudio"* \
+    "$HOME/.local/share/Google/AndroidStudio"* \
+    "$HOME/.local/share/AndroidStudio"* \
+    "$HOME/.local/state/AndroidStudio"*
+
+echo "Removing Gradle caches..."
+rm -rf \
+    "$HOME/.gradle" \
+    "$HOME/.gradle/caches" \
+    "$HOME/.gradle/daemon" \
+    "$HOME/.gradle/wrapper"
+
+echo "Removing Android-related environment variables..."
+
+# Remove common Android lines from shell configuration files
+for file in \
+    "$HOME/.bashrc" \
+    "$HOME/.zshrc" \
+    "$HOME/.profile" \
+    "$HOME/.bash_profile" \
+    "$HOME/.config/fish/config.fish"
+do
+    if [[ -f "$file" ]]; then
+        sed -i \
+            -e '/ANDROID_HOME/d' \
+            -e '/ANDROID_SDK_ROOT/d' \
+            -e '/ANDROID_SDK_HOME/d' \
+            -e '/Android\/Sdk/d' \
+            -e '/Android\/sdk/d' \
+            "$file"
+    fi
+done
+
+echo "Removing Android Studio desktop entries..."
+rm -f \
+    "$HOME/.local/share/applications/android-studio.desktop" \
+    "$HOME/.local/share/applications/jetbrains-android-studio.desktop"
+
+echo "Removing JetBrains Toolbox Android Studio installation..."
+rm -rf "$HOME/.local/share/JetBrains/Toolbox/apps/AndroidStudio"
+
+echo
+echo "Android Studio and associated Android development files have been removed."
+echo
+echo "You may need to restart your shell for environment-variable changes to take effect."
