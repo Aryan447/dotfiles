@@ -4,13 +4,16 @@
 # 1. scratch window
 # 2. Neovim
 
+tmux rename-window nvim
 tmux new-window -dn scratch
+
 nvim .
 clear
 
 # Can also do advanced things like this:
 # #!/usr/bin/env bash
 #
+# tmux rename-window nvim
 # tmux new-window -dn scratch
 #
 # tmux new-window -dn postgres -c "$(pwd)"
@@ -21,6 +24,6 @@ clear
 # tmux send-keys -t spring-boot \
 #     'set -a; source .env; set +a; ./mvnw spring-boot:run' C-m
 #
+# tmux select-window -t nvim
 # nvim .
 # clear
-

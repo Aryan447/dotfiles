@@ -24,4 +24,6 @@ npm i -g n
 n lts
 curl -fsSL https://bun.sh/install | bash
 
-
+# Cloudflared for tunnelling (localhost to internet)
+# cloudflared tunnel --url http://localhost:8000
+sudo pacman -S cloudflared
